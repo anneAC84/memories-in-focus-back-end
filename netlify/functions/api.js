@@ -8,11 +8,12 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 
 // Router files
-const testJWTRouter = require('../../photos.js')
+const testJWTRouter = require('../../controllers/test-jwt')
 const usersRouter = require('../../controllers/users')
 const profilesRouter = require('../../controllers/profiles')
 const photosRouter = require('../../controllers/photos.js')
 
+//Middleware
 
 
 mongoose.connect(process.env.MONGODB_URI)
