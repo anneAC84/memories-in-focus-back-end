@@ -1,3 +1,4 @@
+const serverless = require('serverless-http')
 const dotenv = require('dotenv')
 dotenv.config()
 const cors = require('cors')
@@ -7,13 +8,12 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 
 // Router files
-const testJWTRouter = require('./controllers/test-jwt')
-const usersRouter = require('./controllers/users')
-const profilesRouter = require('./controllers/profiles')
-const photosRouter = require('./controllers/photos.js')
+const testJWTRouter = require('../../photos.js')
+const usersRouter = require('../../controllers/users')
+const profilesRouter = require('../../controllers/profiles')
+const photosRouter = require('../../controllers/photos.js')
 
-//Middleware
-const verifyToken = require('./middleware/verify-token.js')
+
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -37,6 +37,4 @@ app.use('/photos', photosRouter)
 
 
 
-app.listen(3000, () => {
-    console.log('the express app is ready')
-})
+module.exports.handler = serverless(app)
